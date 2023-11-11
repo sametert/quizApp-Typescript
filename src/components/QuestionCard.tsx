@@ -24,9 +24,7 @@ const QuestionCard: React.FC<Props> = ( {question, answers,callback,userAnswer,q
               </button>
             </div>
           ))}
-        </div>
-        
-      
+        </div> 
     </div>
   )
 }
