@@ -7,7 +7,7 @@ import QuestionCard from './components/QuestionCard';
 //Types
 import { QuestionState,Difficulty } from './API';
 
-type AnswerObject = {
+export type AnswerObject = {
   question : string;
   answer : string;
   correct : boolean;
@@ -16,6 +16,7 @@ type AnswerObject = {
 
 const TOTAL_QUESTIONS = 10;
 
+// console.log(fetchQuizQuestion(TOTAL_QUESTIONS,Difficulty.HARD))
 const App = () => {
   const [loading , setLoading] = useState(false);
   const [questions, setQuestions] = useState<QuestionState[]>([]);
@@ -27,6 +28,7 @@ const App = () => {
   // console.log(questions);
   // console.log(loading);
   // console.log(userAnswers.length)
+ 
 
   const startTrivia = async () => {
     setLoading(true);
@@ -43,6 +45,9 @@ const App = () => {
     setNumber(0);
     setLoading(false);
   }
+
+  // console.log(questions)
+
 
   const checkAnswer = (e : React.MouseEvent<HTMLButtonElement>) => { 
     if(!gameOver) {
@@ -65,6 +70,8 @@ const App = () => {
       setUserAnswers(prev => [...prev, answerObject]);
     }
   }
+
+  // console.log(userAnswers)
 
   // console.log(userAnswers);
 
@@ -90,7 +97,7 @@ const App = () => {
         Start
         </button>
       ) : null}
-      {!gameOver ?  <p className='score'>Score:</p> : null}
+      {!gameOver ?  <p className='score'>Score: {score}</p> : null}
       {loading && <p>Loading Questions ...</p>}
       {!loading && !gameOver && ( 
         <QuestionCard  
